@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Delhi Oral & Dental Clinic – Lajpat Nagar, New Delhi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── VARIABLES ─────────────────────────────────────────── */
+    :root {
+      --bg:         #080c10;
+      --surface:    #0e1318;
+      --card:       #131a22;
+      --border:     rgba(255,255,255,0.08);
+      --border-hi:  rgba(255,255,255,0.22);
+      --text:       #f0f4f8;
+      --muted:      #8a9baa;
+      --accent:     #c8dff0;   /* icy blue-white */
+      --accent2:    #e8f0f8;
+      --glow:       rgba(180,215,240,0.18);
+      --glow-s:     rgba(180,215,240,0.06);
+    }
+
+    /* ─── RESET & BASE ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: rgba(200,223,240,0.25); }
+
+    /* ─── GRAIN OVERLAY ─────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ─── SCROLL BAR ────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(200,223,240,0.25); border-radius: 10px; }
+
+    /* ─── NAV ───────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 800;
+      padding: 1.6rem 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: padding 0.4s ease, background 0.4s ease, backdrop-filter 0.4s;
+      animation: navDrop 0.9s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    nav.scrolled {
+      padding: 1rem 6%;
+      background: rgba(8,12,16,0.85);
+      backdrop-filter: blur(18px) saturate(150%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    @keyframes navDrop {
+      from { opacity:0; transform:translateY(-20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-decoration: none;
+      line-height: 1;
+      background-color: #000000a5;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .logo span { color: var(--accent); font-style: italic; }
+
+    .nav-links {
+      display: flex;
+      gap: 2.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.35s ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      padding: 0.6rem 1.6rem;
+      border: 1px solid var(--border-hi);
+      border-radius: 2px;
+      color: var(--text) !important;
+      font-size: 0.8rem !important;
+      letter-spacing: 0.14em !important;
+      text-transform: uppercase !important;
+      font-weight: 500 !important;
+      transition: background 0.3s, border-color 0.3s, color 0.3s !important;
+      text-decoration: none;
+    }
+    .nav-cta:hover {
+      background: rgba(255,255,255,0.07) !important;
+      border-color: var(--accent) !important;
+      color: var(--accent) !important;
+    }
+    .nav-cta::after { display: none !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 900;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.35s ease;
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(8,12,16,0.97);
+      backdrop-filter: blur(20px);
+      z-index: 850;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.4rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* ─── CANVAS / HERO SECTION ──────────────────────────────── */
+    .scroll-section {
+      height: 300vh;
+      position: relative;
+    }
+
+    canvas {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 10vh;
+      pointer-events: none;
+      z-index: 10;
+      background: linear-gradient(to top, rgba(8,12,16,0.85) 0%, rgba(8,12,16,0.1) 60%, transparent 100%);
+    }
+
+    .hero-text {
+      text-align: center;
+      max-width: 720px;
+      padding: 0 2rem;
+    }
+
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.4s both;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      line-height: 1.07;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.65s both;
+    }
+    .hero-title em { font-style: italic; color: var(--accent); font-weight: 300; }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 2.2rem;
+      opacity: 0;
+      animation: fadeUp 1s 0.85s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      pointer-events: all;
+      opacity: 0;
+      animation: fadeUp 1s 1.05s both;
+    }
+
+    .btn-primary {
+      padding: 0.85rem 2.4rem;
+      background: var(--text);
+      color: var(--bg);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-radius: 2px;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(200,223,240,0.2);
+    }
+
+    .btn-secondary {
+      padding: 0.85rem 2.4rem;
+      border: 1px solid var(--border-hi);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-radius: 2px;
+      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      background: rgba(200,223,240,0.06);
+      transform: translateY(-2px);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 3.5vh;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeIn 1s 1.5s both;
+    }
+    .scroll-hint span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .scroll-hint .line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+      animation: lineGrow 1.8s 2s ease-in-out infinite;
+    }
+    @keyframes lineGrow {
+      0%,100% { transform: scaleY(1); opacity:0.5; }
+      50% { transform: scaleY(0.5); opacity: 1; }
+    }
+
+    /* ─── SECTION SHARED ─────────────────────────────────────── */
+    section {
+      position: relative;
+      padding: 8rem 6%;
+      overflow: hidden;
+    }
+
+    .divider {
+      width: 40px; height: 1px;
+      background: var(--accent);
+      margin-bottom: 1.8rem;
+    }
+
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .section-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 1.4rem;
+    }
+    .section-h2 em { font-style: italic; color: var(--accent); }
+
+    .section-p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    /* Reveal on scroll */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    [data-reveal].revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-reveal="left"]  { transform: translateX(-36px); }
+    [data-reveal="right"] { transform: translateX(36px); }
+    [data-reveal="left"].revealed, [data-reveal="right"].revealed { transform: translateX(0); }
+
+    /* ─── ABOUT ──────────────────────────────────────────────── */
+    #about {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: center;
+      max-width: 1260px;
+      margin: 0 auto;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img-frame {
+      position: relative;
+      border-radius: 3px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    }
+
+    .about-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(15%) contrast(1.05);
+      transition: filter 0.6s ease, transform 0.6s ease;
+    }
+    .about-img-frame:hover img {
+      filter: grayscale(0%) contrast(1);
+      transform: scale(1.03);
+    }
+    .about-img-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(200,223,240,0.07), transparent 60%);
+      pointer-events: none;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -2rem; right: -2rem;
+      width: 130px; height: 130px;
+      background: var(--card);
+      border: 1px solid var(--border-hi);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      z-index: 5;
+    }
+    .about-badge .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .about-badge .lbl {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .about-content { display: flex; flex-direction: column; gap: 1.6rem; }
+
+    .about-doc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.4rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      width: fit-content;
+    }
+    .stars { color: #fff; font-size: 1rem; letter-spacing: 2px; }
+    .rating-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .rating-count {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 0.6rem;
+    }
+    .stat-cell {
+      background: var(--card);
+      padding: 1.4rem 1rem;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .stat-cell:hover { background: rgba(200,223,240,0.04); }
+    .stat-cell .n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1;
+    }
+    .stat-cell .l {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    /* ─── SERVICES ───────────────────────────────────────────── */
+    #services {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+
+    .services-header {
+      max-width: 1260px;
+      margin: 0 auto 4.5rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+
+    .services-grid {
+      max-width: 1260px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .svc-card {
+      background: var(--card);
+      padding: 2.8rem 2.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: background 0.4s;
+    }
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+    .svc-card:hover { background: rgba(200,223,240,0.04); }
+    .svc-card:hover::before { transform: scaleX(1); }
+
+    .svc-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      opacity: 0.7;
+    }
+    .svc-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+      filter: grayscale(40%);
+      transition: filter 0.3s;
+    }
+    .svc-card:hover .svc-icon { filter: grayscale(0); }
+    .svc-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .svc-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ─── REVIEWS ────────────────────────────────────────────── */
+    #reviews {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .reviews-header {
+      max-width: 1260px;
+      margin: 0 auto 4rem;
+    }
+
+    .reviews-track-wrap {
+      max-width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    .reviews-track {
+      display: flex;
+      gap: 1.4rem;
+      width: max-content;
+      animation: marquee 36s linear infinite;
+    }
+    .reviews-track:hover { animation-play-state: paused; }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 2rem 2rem;
+      width: 320px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: default;
+    }
+    .review-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .review-stars { font-size: 0.9rem; letter-spacing: 2px; color: #fff; }
+    .review-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+      flex: 1;
+    }
+    .review-author {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    #contact {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      max-width: 1260px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .info-blocks {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .info-block {
+      padding: 1.8rem 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 1.4rem;
+      align-items: flex-start;
+      transition: background 0.3s;
+    }
+    .info-block:last-child { border-bottom: none; }
+    .info-block:hover { background: rgba(200,223,240,0.03); }
+    .info-icon {
+      font-size: 1.1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+      opacity: 0.8;
+    }
+    .info-block h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .info-block p, .info-block a {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .info-block a:hover { color: var(--text); }
+
+    .hours-table { width: 100%; font-size: 0.88rem; color: var(--muted); }
+    .hours-table td { padding: 2px 0; }
+    .hours-table td:last-child { text-align: right; color: var(--accent); }
+
+    /* Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .field label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .field input, .field textarea, .field select {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      padding: 0.85rem 1.1rem;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      -webkit-appearance: none;
+    }
+    .field input::placeholder, .field textarea::placeholder {
+      color: rgba(138,155,170,0.4);
+    }
+    .field input:focus, .field textarea:focus, .field select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(200,223,240,0.08);
+    }
+    .field textarea { resize: vertical; min-height: 110px; }
+
+    .form-submit {
+      padding: 1rem 2.4rem;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      align-self: flex-start;
+    }
+    .form-submit:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(200,223,240,0.15);
+    }
+
+    /* ─── MAP STRIP ──────────────────────────────────────────── */
+    .map-strip {
+      height: 300px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .map-strip iframe {
+      width: 100%; height: 100%;
+      border: 0;
+      filter: grayscale(1) invert(1) contrast(0.7) brightness(0.5);
+      transition: filter 0.5s;
+    }
+    .map-strip iframe:hover { filter: grayscale(0.6) invert(0.9) contrast(0.8) brightness(0.55); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 5rem 6% 2.5rem;
+    }
+
+    .footer-grid {
+      max-width: 1260px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand .logo-lg {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .footer-brand .logo-lg span { color: var(--accent); font-style: italic; }
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 280px;
+    }
+    .footer-brand .phone-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.4rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-brand .phone-link:hover { color: var(--accent); }
+
+    .footer-col h5 {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.4rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-col ul a {
+      font-size: 0.88rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s, padding-left 0.3s;
+    }
+    .footer-col ul a:hover { color: var(--text); padding-left: 5px; }
+
+    .footer-bottom {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .footer-bottom .legal a {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: color 0.3s;
+    }
+    .footer-bottom .legal a:hover { color: var(--text); }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(24px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity:0; }
+      to   { opacity:1; }
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .about-grid { gap: 4rem; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+      .contact-grid { gap: 4rem; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 5rem 5%; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+      .about-badge { right: 1rem; bottom: -1.5rem; width: 100px; height: 100px; }
+      .about-badge .num { font-size: 1.6rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.4rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-bottom .legal a:first-child { margin-left: 0; }
+      .stats-row { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2.6rem; }
+      .stats-row { grid-template-columns: 1fr; }
+      .stat-cell { padding: 1.2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+    <nav id="nav">
+    <a href="#home" class="logo">Grover <span>Dental Studio</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:919013233543" class="nav-cta">Call Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mm-link">About</a>
+    <a href="#services" class="mm-link">Services</a>
+    <a href="#reviews" class="mm-link">Reviews</a>
+    <a href="#contact" class="mm-link">Contact</a>
+    <a href="tel:919013233543" class="mm-link">+91 90132 33543</a>
+  </div>
+
+  <div class="scroll-section" id="home">
+    <canvas id="canvas"></canvas>
+
+    <div class="hero-overlay">
+      <div class="hero-text">
+        <p class="hero-tag">Lajpat Nagar II, New Delhi</p>
+        <h1 class="hero-title">
+          Your smile,<br><em>perfected.</em>
+        </h1>
+        <p class="hero-sub">
+          Premium dental care at Grover Dental Studio—trusted by thousands across Delhi for expert treatment, warm service, and lasting results.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Book Appointment</a>
+          <a href="#services" class="btn-secondary">Our Services</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-img-wrap" data-reveal="left">
+        <div class="about-img-frame">
+          <img
+            src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=900&q=80"
+            alt="Grover Dental Studio Expert Team"
+          >
+        </div>
+        <div class="about-badge">
+          <span class="num">5.0</span>
+          <span class="lbl">Google<br>Rating</span>
+        </div>
+      </div>
+
+      <div class="about-content" data-reveal="right">
+        <span class="eyebrow">About the clinic</span>
+        <h2 class="section-h2">Care you can<br><em>trust completely</em></h2>
+
+        <div class="about-doc-name">Expert Dental Professionals</div>
+
+        <p class="section-p">
+          Grover Dental Studio is a premier dental center nestled in the heart of Lajpat Nagar II, New Delhi. Located conveniently at L-1, opposite the Delhi Jal Board Office, our highly experienced team combines clinical excellence with a genuinely warm approach to patient care.
+        </p>
+        <p class="section-p">
+          From routine cleanings to advanced restorative procedures, we use the latest techniques to ensure every patient leaves with a healthy, confident smile. 
+        </p>
+
+        <div class="rating-row">
+          <span class="stars">★★★★★</span>
+          <span class="rating-val">5.0</span>
+          <span class="rating-count">Google Verified Reviews</span>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-cell">
+            <div class="n">5.0</div>
+            <div class="l">Star Rating</div>
+          </div>
+          <div class="stat-cell">
+            <div class="n">57</div>
+            <div class="l">Patient Reviews</div>
+          </div>
+          <div class="stat-cell">
+            <div class="n">100%</div>
+            <div class="l">Care & Comfort</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="services-header" data-reveal>
+      <div>
+        <span class="eyebrow">What we offer</span>
+        <h2 class="section-h2">Comprehensive<br><em>dental services</em></h2>
+      </div>
+      <p class="section-p" style="max-width:360px;">
+        From preventive care to complex restorations—every procedure carried out with precision and compassion.
+      </p>
+    </div>
+
+    <div class="services-grid" data-reveal>
+      <div class="svc-card">
+        <span class="svc-num">01</span>
+        <span class="svc-icon">✦</span>
+        <div class="svc-title">Root Canal Treatment</div>
+        <p class="svc-body">Pain-free root canal procedures using rotary endodontics and digital X-ray technology for accurate, comfortable, and lasting results.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-num">02</span>
+        <span class="svc-icon">◈</span>
+        <div class="svc-title">Cosmetic Dentistry</div>
+        <p class="svc-body">Teeth whitening, veneers, and smile makeovers tailored to enhance your natural beauty and restore your self-confidence.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-num">03</span>
+        <span class="svc-icon">⬡</span>
+        <div class="svc-title">Dental Implants</div>
+        <p class="svc-body">State-of-the-art titanium implants offering a permanent, natural-looking solution for missing teeth with outstanding longevity.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-num">04</span>
+        <span class="svc-icon">◎</span>
+        <div class="svc-title">Orthodontics & Braces</div>
+        <p class="svc-body">Traditional braces and clear aligner treatments to straighten teeth, correct bite issues, and achieve your ideal smile alignment.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="reviews-header" data-reveal>
+      <span class="eyebrow">Patient Stories</span>
+      <h2 class="section-h2">What our patients<br><em>are saying</em></h2>
+    </div>
+
+    <div class="reviews-track-wrap" data-reveal>
+      <div class="reviews-track">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Visited Grover Dental Studio for a routine check-up. The staff was incredibly welcoming, and the clinic was spotless. Highly recommended for anyone in Lajpat Nagar!"</p>
+          <div class="review-author">Rohan D.</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"I had a great experience getting my cavities filled here. The dentist was very gentle and made sure I felt absolutely no pain. Extremely professional team."</p>
+          <div class="review-author">Kavita M.</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The clinic is perfectly located near the Delhi Jal Board office. Fantastic service and they were completely transparent about all the treatment costs before starting."</p>
+          <div class="review-author">Amit K.</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Best dental clinic in Delhi! They accommodated my busy schedule perfectly, and my teeth look and feel amazing after the deep clean. Thank you so much!"</p>
+          <div class="review-author">Priya S.</div>
+        </div>
+        
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Visited Grover Dental Studio for a routine check-up. The staff was incredibly welcoming, and the clinic was spotless. Highly recommended for anyone in Lajpat Nagar!"</p>
+          <div class="review-author">Rohan D.</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"I had a great experience getting my cavities filled here. The dentist was very gentle and made sure I felt absolutely no pain. Extremely professional team."</p>
+          <div class="review-author">Kavita M.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-grid" data-reveal>
+      <div>
+        <span class="eyebrow">Get in touch</span>
+        <h2 class="section-h2">Book your<br><em>appointment</em></h2>
+        <p class="section-p" style="margin-bottom: 2rem;">
+          Ready to achieve your perfect smile? Reach out to us to schedule your visit or to learn more about our treatments.
+        </p>
+
+        <div class="info-blocks">
+          <div class="info-block">
+            <span class="info-icon">📍</span>
+            <div>
+              <h4>Location</h4>
+              <p>L-1, opposite Delhi Jal Board Office<br>Kasturba Niketan, Block H, Lajpat Nagar II<br>New Delhi, Delhi 110024, India</p>
+            </div>
+          </div>
+          <div class="info-block">
+            <span class="info-icon">📞</span>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:919013233543">+91 90132 33543</a>
+            </div>
+          </div>
+          <div class="info-block">
+            <span class="info-icon">🕒</span>
+            <div style="width: 100%;">
+              <h4>Hours</h4>
+              <table class="hours-table">
+                <tr><td>Evening Hours</td><td>Opens at 5:00 PM</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form">
+        <div class="form-row">
+          <div class="field">
+            <label>First Name</label>
+            <input type="text" placeholder="John">
+          </div>
+          <div class="field">
+            <label>Last Name</label>
+            <input type="text" placeholder="Doe">
+          </div>
+        </div>
+        <div class="field">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 98765 43210">
+        </div>
+        <div class="field">
+          <label>Service of Interest</label>
+          <select>
+            <option>General Checkup</option>
+            <option>Root Canal</option>
+            <option>Dental Implants</option>
+            <option>Orthodontics</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Message</label>
+          <textarea placeholder="How can we help you?"></textarea>
+        </div>
+        <button type="button" class="form-submit">Send Request</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="map-strip">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14013.900985226767!2d77.2341!3d28.5678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM0JzA0LjEiTiA3N8KwMTQnMDIuOCJF!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo-lg">Grover<br><span>Dental Studio</span></a>
+        <p>Premium dental care in Lajpat Nagar, focused on delivering the highest standards of treatment in a comfortable setting.</p>
+        <a href="tel:919013233543" class="phone-link">+91 90132 33543</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#reviews">Patient Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Root Canals</a></li>
+          <li><a href="#services">Implants</a></li>
+          <li><a href="#services">Cosmetic</a></li>
+          <li><a href="#services">Orthodontics</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Visit Us</h5>
+        <ul>
+          <li><a href="#">L-1, opp. Delhi Jal Board Office</a></li>
+          <li><a href="#">Kasturba Niketan, Block H</a></li>
+          <li><a href="#">Lajpat Nagar II, New Delhi</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Grover Dental Studio. All Rights Reserved.</p>
+      <div class="legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ─── Canvas frame animation ─────────────────────────────── */
+    const canvas = document.getElementById("canvas");
+    const ctx    = canvas.getContext("2d");
+
+    let frameFolder, frameCount, images = [], currentIsMobile;
+
+    function isMobile() { return window.innerWidth <= 768; }
+
+    function setCanvasSize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function currentFrame(index) {
+      return `${frameFolder}/ezgif-frame-${String(index).padStart(3, "0")}.jpg`;
+    }
+
+    function drawFrame(index) {
+      if (!images[index] || !images[index].complete || images[index].naturalWidth === 0) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // cover-fit the image
+      const iw = images[index].naturalWidth  || canvas.width;
+      const ih = images[index].naturalHeight || canvas.height;
+      const scale = Math.max(canvas.width / iw, canvas.height / ih);
+      const dw = iw * scale, dh = ih * scale;
+      const dx = (canvas.width  - dw) / 2;
+      const dy = (canvas.height - dh) / 2;
+      ctx.drawImage(images[index], dx, dy, dw, dh);
+    }
+
+    function loadImages() {
+      images = [];
+      for (let i = 1; i <= frameCount; i++) {
+        const img = new Image();
+        img.src = currentFrame(i);
+        images.push(img);
+      }
+      images[0].onload = () => drawFrame(0);
+    }
+
+    function updateDeviceConfig() {
+      const mobile = isMobile();
+      if (mobile === currentIsMobile) return;
+      currentIsMobile = mobile;
+      frameFolder = mobile ? "framePhone" : "frams";
+      frameCount  = mobile ? 76 : 120;
+      loadImages();
+    }
+
+    setCanvasSize();
+    updateDeviceConfig();
+
+    /* Scroll → frame */
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollTop = window.scrollY;
+        const section   = document.querySelector(".scroll-section");
+        const maxScroll = section.offsetHeight - window.innerHeight;
+        if (maxScroll <= 0) { ticking = false; return; }
+        const fraction  = Math.max(0, Math.min(1, scrollTop / maxScroll));
+        const idx       = Math.min(frameCount - 1, Math.floor(fraction * frameCount));
+        drawFrame(idx);
+        ticking = false;
+      });
+    });
+
+    /* Resize */
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setCanvasSize();
+        updateDeviceConfig();
+        // redraw current frame
+        const scrollTop = window.scrollY;
+        const section   = document.querySelector(".scroll-section");
+        const maxScroll = section.offsetHeight - window.innerHeight;
+        if (maxScroll > 0) {
+          const fraction = Math.max(0, Math.min(1, scrollTop / maxScroll));
+          const idx = Math.min(frameCount - 1, Math.floor(fraction * frameCount));
+          drawFrame(idx);
+        }
+      }, 200);
+    });
+
+    /* ─── Navbar ─────────────────────────────────────────────── */
+    const nav = document.getElementById("nav");
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 80);
+    }, { passive: true });
+
+    /* ─── Hamburger ──────────────────────────────────────────── */
+    const hamburger  = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("open");
+      mobileMenu.classList.toggle("open");
+      document.body.style.overflow = mobileMenu.classList.contains("open") ? "hidden" : "";
+    });
+
+    document.querySelectorAll(".mm-link").forEach(link => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "";
+      });
+    });
+
+    /* ─── Scroll Reveal ──────────────────────────────────────── */
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("revealed");
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+
+    document.querySelectorAll("[data-reveal]").forEach(el => revealObs.observe(el));
+
+    /* ─── Stagger service cards ──────────────────────────────── */
+    const svcObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll(".svc-card").forEach((card, i) => {
+            setTimeout(() => {
+              card.style.opacity    = "1";
+              card.style.transform  = "translateY(0)";
+            }, i * 90);
+          });
+          svcObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const svcGrid = document.querySelector(".services-grid");
+    if (svcGrid) {
+      svcGrid.querySelectorAll(".svc-card").forEach(c => {
+        c.style.opacity   = "0";
+        c.style.transform = "translateY(30px)";
+        c.style.transition = "opacity 0.7s ease, transform 0.7s ease, background 0.4s";
+      });
+      svcObs.observe(svcGrid);
+    }
+
+    /* ─── Counter animation ──────────────────────────────────── */
+    function animateCount(el) {
+      const raw = el.textContent.trim();
+      const num = parseInt(raw.replace(/\D/g, ""));
+      const suffix = raw.replace(/[\d]/g, "");
+      if (isNaN(num)) return;
+      let start = 0;
+      const duration = 1800;
+      const step = 16;
+      const increment = num / (duration / step);
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= num) { el.textContent = num + suffix; clearInterval(timer); }
+        else el.textContent = Math.floor(start) + suffix;
+      }, step);
+    }
+
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll(".n, .stat-num").forEach(animateCount);
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const statsRow = document.querySelector(".stats-row");
+    if (statsRow) counterObs.observe(statsRow);
+
+    /* ─── Form ───────────────────────────────────────────────── */
+    document.getElementById("contactForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const btn = e.target.querySelector(".form-submit");
+      btn.textContent = "Message Sent ✓";
+      btn.style.background = "rgba(200,223,240,0.2)";
+      btn.style.color = "var(--accent)";
+      btn.style.border = "1px solid var(--accent)";
+      btn.disabled = true;
+      setTimeout(() => {
+        e.target.reset();
+        btn.textContent = "Send Appointment Request →";
+        btn.style.cssText = "";
+        btn.disabled = false;
+      }, 3500);
+    });
+  </script>
+</body>
+</html>
